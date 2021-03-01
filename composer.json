@@ -1,0 +1,27 @@
+{
+    "name": "studiomitte/form-multiple-uploads",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "authors": [
+        {
+            "name": "Georg Ringer",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-form": "^10.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "StudioMitte\\FormMultipleUploads\\": "Classes"
+        }
+    },
+    "replace": {
+        "typo3-ter/form-multiple-uploads": "self.version"
+    },
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "form_multiple_uploads"
+		}
+	}
+}
