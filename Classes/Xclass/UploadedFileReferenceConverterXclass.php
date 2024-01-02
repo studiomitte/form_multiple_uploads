@@ -2,6 +2,7 @@
 
 namespace StudioMitte\FormMultipleUploads\Xclass;
 
+use TYPO3\CMS\Core\Http\UploadedFile;
 use TYPO3\CMS\Extbase\Domain\Model\AbstractFileFolder;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference as ExtbaseFileReference;
@@ -26,9 +27,15 @@ class UploadedFileReferenceConverterXclass extends UploadedFileReferenceConverte
      */
     public function convertFrom($source, $targetType, array $convertedChildProperties = [], PropertyMappingConfigurationInterface $configuration = null)
     {
+        if ($source instanceof UploadedFile) {
+            $source = $this->convertUploadedFileToUploadInfoArray($source);
+        }
         if (isset($source[0])) {
             $result = [];
             foreach ($source as $singleSource) {
+                if ($singleSource instanceof UploadedFile) {
+                    $singleSource = $this->convertUploadedFileToUploadInfoArray($singleSource);
+                }
                 $converted = $this->convertSingleFile($singleSource, $configuration);
                 $result[] = $converted;
             }
@@ -49,9 +56,8 @@ class UploadedFileReferenceConverterXclass extends UploadedFileReferenceConverte
      */
     protected function convertSingleFile($source, ?PropertyMappingConfigurationInterface $configuration)
     {
-        if ($source instanceof FileReference) {
-            return $source;
-        }
+       
+
         if (!isset($source['error']) || $source['error'] === \UPLOAD_ERR_NO_FILE) {
             if (isset($source['submittedFile']['resourcePointer'])) {
                 try {

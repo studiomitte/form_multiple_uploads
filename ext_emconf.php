@@ -6,13 +6,13 @@ $EM_CONF[$_EXTKEY] = [
     'category' => 'fe',
     'author' => 'Georg Ringer',
     'author_email' => 'gr@studiomitte.com',
-    'state' => 'alpha',
+    'state' => 'stable',
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
     'version' => '1.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '10.4.0-10.4.99',
+            'typo3' => '10.4.0-12.4.7',
             'form' => '',
         ],
         'conflicts' => [],
