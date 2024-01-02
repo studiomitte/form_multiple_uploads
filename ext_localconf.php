@@ -7,3 +7,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Form\Mvc\Property\TypeC
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Form\Domain\Finishers\SaveToDatabaseFinisher::class] = [
     'className' => \StudioMitte\FormMultipleUploads\Xclass\SaveToDabaseFinisherXclass::class
 ];
+
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Form\Domain\Finishers\EmailFinisher::class] = [
+    'className' => \StudioMitte\FormMultipleUploads\Xclass\EmailFinisherXclass::class
+];
